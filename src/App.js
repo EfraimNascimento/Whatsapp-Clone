@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import ChatListitem from './components/ChatListitem';
 import ChatIntro from './components/ChatIntro';
+import ChatWindow from './components/ChatWindow';
+
 
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -11,7 +13,14 @@ import './App.css';
 
 export default () =>{
 
-  const [chatlist, setChatList] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]);
+  const [chatlist, setChatList] = useState([
+    {chatId: 1, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
+    {chatId: 2, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
+    {chatId: 3, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
+    {chatId: 4, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
+
+  ]);
+  const [activeChat, setActiveChat] = useState({});
 
   return(
     <div className="app-window">
@@ -45,7 +54,10 @@ export default () =>{
             <ChatListitem 
             
               key={key}
-            
+              data={item}
+              active={activeChat.chatId === chatlist[key].chatId}
+              onClick={() => setActiveChat(chatlist[key])}
+
             />
           ))}
 
@@ -54,7 +66,13 @@ export default () =>{
 
       </div>
       <div className="contentarea">
-        <ChatIntro />
+        {activeChat.chatId !== undefined && 
+          <ChatWindow />
+        }
+        {activeChat.chatId === undefined &&
+          <ChatIntro />
+        }
+
       </div>
     </div>
   )
