@@ -11,12 +11,13 @@ import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 import { useState } from 'react';
 
-export default () => {
+export default ({data}) => {
 
     const [emojiOpen, setEmojiOpen] = useState(false); 
+    const [text, setText] = useState('');
 
-    const handleEmojiClick = () =>{
-
+    const handleEmojiClick = (e, emojiObject) =>{
+        setText(text + emojiObject.emoji);
     }
 
     const handleOpenEmoji = () =>{
@@ -27,13 +28,21 @@ export default () => {
         setEmojiOpen(false)
     }
 
+    const handleMicClick = () =>{
+
+    }
+
+    const handleSendClick = () =>{
+        
+    }
+
     return(
         <div className="chatWindow">
             <div className="chatWindow--header">
 
                 <div className="chatWindow--headerinfo">
                     <img className="chatWindow--avatar" src="https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998"></img>
-                    <div className="chatWindow--name">Efraim Nascimento</div>
+                    <div className="chatWindow--name">Efraim</div>
                 </div>
 
                 <div className="chatWindow--headerbuttons">
@@ -89,14 +98,24 @@ export default () => {
                     className="chatWindow--input"
                     type="text" 
                     placeholder="Digite uma mensagem"
+                    value={text}
+                    onChange={e=>setText(e.target.value)}
                     />
                 </div>
 
                 <div className="chatWindow--pos">
-
-                    <div className="chatWindow--btn">
+                    {text === '' &&
+                    <div onClick={handleMicClick}className="chatWindow--btn">
+                        <MicIcon style={{color: '#919191'}}/>
+                    </div>
+                    
+                    }
+                    {text !== '' &&
+                    <div onClick={handleSendClick}className="chatWindow--btn">
                         <SendIcon style={{color: '#919191'}}/>
                     </div>
+                    
+                    }
 
                 </div>
             </div>
