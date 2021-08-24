@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ChatListitem from './components/ChatListitem';
 import ChatIntro from './components/ChatIntro';
 import ChatWindow from './components/ChatWindow';
-
+import NewChat from './components/NewChat';
 
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -20,16 +20,29 @@ export default () =>{
     {chatId: 4, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
 
   ]);
+
+  const handleNewChat = () =>{
+    setShowNewChat(true);
+  }
+
   const [activeChat, setActiveChat] = useState({});
   const [user, setUser] = useState({
     id: 1234,
     avatar: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998',
     name: 'Efraim Nascimento'
-  })
+  });
+  const [showNewChat, setShowNewChat] = useState(false);
+
 
   return(
     <div className="app-window">
       <div className="sidebar">
+        <NewChat 
+            show={showNewChat}
+            setShow={setShowNewChat}
+            user={user}
+            chatlist={chatlist}
+        />
         <header>
           <img className="header--avatar" src={user.avatar} alt="avatar"></img>
           <div className="header--buttons">
@@ -37,7 +50,7 @@ export default () =>{
               <DonutLargeIcon style={{color:'#919191'}} />
             </div>
             
-            <div className="header--btn">
+            <div onClick={handleNewChat} className="header--btn">
               <ChatIcon style={{color:'#919191'}} />
             </div>
             
