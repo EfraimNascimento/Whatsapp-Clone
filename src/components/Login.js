@@ -3,8 +3,8 @@ import Api from '../Api';
 import './Login.css';
 
 export default ({onReceive}) =>{
-    const handleFacebookLogin = async () =>{
-        let result = await Api.fbPopup();
+    const handleGoogleLogin = async () =>{
+        let result = await Api.googleLogin();
         if(result){
             onReceive(result.user);
         } else{
@@ -15,7 +15,7 @@ export default ({onReceive}) =>{
 
     return (
         <div className="login">
-            <button onClick={handleFacebookLogin}>Logar com facebook</button>
+            <button onClick={handleGoogleLogin}>Logar com facebook</button>
         </div>
     )
 }

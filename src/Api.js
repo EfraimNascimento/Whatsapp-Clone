@@ -4,13 +4,15 @@ import 'firebase/firebase-firestore';
 
 import firebaseConfig from './firebaseConfig';
 
+const provider = new firebase.auth.GoogleAuthProvider();
+
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 
 export default {
-    fbPopup: async () =>{
-        const provider = new firebase.auth.FacebookAuthProvider();
-        let result = await firebaseApp.auth().signInWithPopup(provider);
+    googleLogin: async () =>{
+        const provider = new firebase.auth.GoogleAuthProvider();
+        let result = await firebase.auth().signInWithPopup(provider);
         return result;
     }
 }
