@@ -15,7 +15,8 @@ export default ({onReceive}) =>{
 
     return (
         <div className="login">
-            <button onClick={handleGoogleLogin}>Logar com facebook</button>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="logoGoogle"></img>
+            <button onClick={handleGoogleLogin} className="login--btn">Logar com Google</button>
         </div>
     )
 }
