@@ -11,24 +11,23 @@ import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import './App.css';
+import Api from './Api';
 
 export default () =>{
 
-  const [chatlist, setChatList] = useState([
-    {chatId: 1, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
-    {chatId: 2, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
-    {chatId: 3, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
-    {chatId: 4, title: 'fulano de tal', image: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998'},
-
-  ]);
+  const [chatlist, setChatList] = useState([]);
+  const [activeChat, setActiveChat] = useState({});
+  const [user, setUser] = useState({
+    id: 'jNRfeD98OZRawY4FmvsoJMMo0l22',
+    name: 'Efraim Nascimento',
+    avatar: 'https://lh3.googleusercontent.com/a-/AOh14Ghze9YkSIdPcWT1s7_7Tcdak2HGfcdBCVYHIRjV5Q=s96-c',
+  });
+  const [showNewChat, setShowNewChat] = useState(false);
 
   const handleNewChat = () =>{
     setShowNewChat(true);
   }
 
-  const [activeChat, setActiveChat] = useState({});
-  const [user, setUser] = useState(null);
-  const [showNewChat, setShowNewChat] = useState(false);
 
   const handleLoginData = async (u) => {
     let newUser = {
@@ -36,6 +35,7 @@ export default () =>{
       name: u.displayName,
       avatar: u.photoURL
     };
+    await Api.addUser(newUser);
     setUser(newUser);
   }
 

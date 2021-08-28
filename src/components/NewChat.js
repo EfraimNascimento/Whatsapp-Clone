@@ -1,16 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './NewChat.css'
+
+import Api from '../Api'
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 export default ({user, chatlist, show, setShow}) =>{
 
-    const [list, setList] = useState([
-        {id:123, avatar: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998', name: 'Efraim Nascimento'},
-        {id:123, avatar: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998', name: 'Efraim Nascimento'},
-        {id:123, avatar: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998', name: 'Efraim Nascimento'},
-        {id:123, avatar: 'https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998', name: 'Efraim Nascimento'},
-    ])
+    const [list, setList] = useState([]);
+
+    useEffect(() => {
+        const getList = async () =>{
+            if(user !== null){
+                let results = await Api.getContactList(user.id);
+
+                setList(results);
+            }
+        }   
+        getList();
+    }, [user])
+
     const handleClose = () =>{
         setShow(false);
     }
