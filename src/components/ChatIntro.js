@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
 import './ChatIntro.css'
 import imgLogo from '../image/intro-connection-light_c98cc75f2aa905314d74375a975d2cf2.jpg'

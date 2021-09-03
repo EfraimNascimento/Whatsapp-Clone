@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import EmojiPicker from 'emoji-picker-react';
@@ -13,7 +15,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 
-export default ({user}) => {
+export default ({user, data}) => {
 
     const body = useRef();
 
@@ -26,31 +28,7 @@ export default ({user}) => {
     const [emojiOpen, setEmojiOpen] = useState(false); 
     const [text, setText] = useState('');
     const [listening, setListening] = useState(false);
-    const [list, setList] = useState([
-        {author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},{author: 123, body:'Bla bla bla'},
-        {author: 123, body:'Bla bla'},
-        {author: 1234, body:'Bla bla bla bla'},
-    ]);
+    const [list, setList] = useState([]);
 
     useEffect(() =>{
         if(body.current.scrollHeight > body.current.offsetHeight){
@@ -98,8 +76,8 @@ export default ({user}) => {
             <div className="chatWindow--header">
 
                 <div className="chatWindow--headerinfo">
-                    <img className="chatWindow--avatar" src="https://media.gettyimages.com/photos/isometric-city-realistic-3d-illustration-picture-id1291121998"></img>
-                    <div className="chatWindow--name">Efraim</div>
+                    <img className="chatWindow--avatar" src={data.image}></img>
+                    <div className="chatWindow--name">{data.title}</div>
                 </div>
 
                 <div className="chatWindow--headerbuttons">

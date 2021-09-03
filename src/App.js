@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import React, { useState, useEffect } from 'react';
 
 import ChatListitem from './components/ChatListitem';
@@ -84,7 +85,7 @@ export default () =>{
         </div>
 
         <div className="chatlist">
-          {chatlist.map((item,key) =>(
+          {chatlist.map((item, key) =>(
             <ChatListitem 
             
               key={key}
@@ -103,6 +104,7 @@ export default () =>{
         {activeChat.chatId !== undefined && 
           <ChatWindow 
             user={user}
+            data={activeChat}
           />
         }
         {activeChat.chatId === undefined &&
