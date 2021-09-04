@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     apiKey: "AIzaSyAxvvG07PGW6Mk1Jft7ar_8ArqKeU14KCk",
     authDomain: "whatsapp-reactjs-c0c6e.firebaseapp.com",

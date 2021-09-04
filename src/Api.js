@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import firebase from 'firebase/app';
 import 'firebase/firebase-auth';
 import 'firebase/firebase-firestore';
@@ -47,7 +48,7 @@ export default {
 
         db.collection('users').doc(user.id).update({
             chats: firebase.firestore.FieldValue.arrayUnion({
-                chastId: newChat.id,
+                chatId: newChat.id,
                 title: user2.name,
                 image: user2.avatar,
                 with: user2.id
@@ -56,7 +57,7 @@ export default {
 
         db.collection('users').doc(user2.id).update({
             chats: firebase.firestore.FieldValue.arrayUnion({
-                chastId: newChat.id,
+                chatId: newChat.id,
                 title: user.name,
                 image: user.avatar,
                 with: user.id
