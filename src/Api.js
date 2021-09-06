@@ -7,6 +7,7 @@ import firebaseConfig from './firebaseConfig';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
+
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 
@@ -62,7 +63,7 @@ export default {
                 image: user.avatar,
                 with: user.id
             })
-        });
+        })
     },
     onChatList:(userId, setChatList) => {
         return db.collection('users').doc(userId).onSnapshot((doc)=>{

@@ -40,7 +40,7 @@ export default ({user, chatlist, show, setShow}) =>{
             </div>
             <div className="newChat--list">
                 {list.map((item,key) =>(
-                    <div onClick={()=>addNewChat(item)}className="newChat--item" key={key}>
+                    <div className="newChat--item" key={key}  onClick={()=>addNewChat(item)}>
                         <img className="newChat--itemavatar" src={item.avatar} alt="avatar"></img>
                         <div className="newChat--itemname">{item.name}</div>
                     </div>
