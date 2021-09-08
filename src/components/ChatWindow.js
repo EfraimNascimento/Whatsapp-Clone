@@ -6,6 +6,7 @@ import EmojiPicker from 'emoji-picker-react';
 import './ChatWindow.css'
 
 import MessageItem from './MessageItem';
+import Api from '../Api';
 
 import SearchIcon from '@material-ui/icons/Search';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
@@ -29,6 +30,14 @@ export default ({user, data}) => {
     const [text, setText] = useState('');
     const [listening, setListening] = useState(false);
     const [list, setList] = useState([]);
+
+    useEffect(() =>{
+
+        setList([]);
+        let unsub = Api.onChatContent(data.chatId, setList);
+        return unsub;
+        
+    }, [data.chatId])
 
     useEffect(() =>{
         if(body.current.scrollHeight > body.current.offsetHeight){
