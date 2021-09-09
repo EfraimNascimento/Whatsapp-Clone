@@ -18,11 +18,7 @@ export default () =>{
 
   const [chatlist, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState({});
-  const [user, setUser] = useState({
-    id: 'jNRfeD98OZRawY4FmvsoJMMo0l22',
-    name: 'Efraim Nascimento',
-    avatar: 'https://lh3.googleusercontent.com/a-/AOh14Ghze9YkSIdPcWT1s7_7Tcdak2HGfcdBCVYHIRjV5Q=s96-c',
-  });
+  const [user, setUser] = useState(null);
   const [showNewChat, setShowNewChat] = useState(false);
 
   useEffect(() =>{
